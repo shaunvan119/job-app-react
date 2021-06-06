@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Box, Grid, ThemeProvider } from "@material-ui/core";
+import theme from "./theme/theme";
+import Header from "./components/Header/";
+import SearchBar from "./components/SearchBar";
+import JobCard from "./components/Job/JobCard";
+import NewJobModel from "./components/Job/NewJobModel";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default () => {
+ return (
+ <ThemeProvider theme={theme}>
+ <Header />
+ <NewJobModel/>
+ <Grid container justify="center">
+ <Grid item xs={10}>
+ <SearchBar />
+ <JobCard/>
+ <JobCard/>
+ <JobCard/>
+ </Grid>
+ </Grid>
+ </ThemeProvider>
+ );
+};
 
-export default App;
+
+
