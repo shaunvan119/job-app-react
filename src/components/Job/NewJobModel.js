@@ -36,7 +36,7 @@ export default (props) => {
 
     ];
     return (
-        <Dialog open={true} fullWidth>
+        <Dialog open={''} fullWidth> 
         <DialogTitle>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 Post Job
