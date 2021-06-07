@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Typography, Button, makeStyles } from "@material-ui/core";
-import { formatDistance } from 'date-fns'
+import { differenceInMinutes } from 'date-fns'
 
 const skills = ["Javascript", "React.js", "Node.js"];
 
@@ -53,7 +53,7 @@ export default (props) => {
             <Grid item container direction="column" alignItems="flex-end" xs>
             <Grid item>
                 <Typography variant="caption">
-                  {formatDistance(Date.now(), props.postedOn)}| {props.type} | {props.location}
+                  {differenceInMinutes(Date.now(), props.postedOn)} min ago | {props.type} | {props.location}
                 </Typography>
                 </Grid>
                 <Grid item>
