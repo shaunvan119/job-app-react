@@ -26,15 +26,23 @@ const useStyles = makeStyles ((theme) => ({
 export default (props) => {
     const [jobDetails, setJobDetails] = useState({
         title:"",
-        type:"",
+        type:"Full time",
         companyName:"",
         companyUrl:"",
-        location:"",
+        location:"Remote",
         link:"",
         description:"",
         skills: [],
 
-    })
+    });
+
+    const handleChange = (e) => {
+        e.persist();
+        setJobDetails((oldState) => ({ 
+            ...oldState, 
+            [e.target.name]: e.target.value
+        }));
+    };
     const classes = useStyles();
     const skills = [
         "Javascript",
@@ -46,6 +54,8 @@ export default (props) => {
         "SQL",
 
     ];
+
+    console.log(jobDetails)
     return (
         <Dialog open={true} fullWidth> 
         <DialogTitle>
@@ -59,7 +69,8 @@ export default (props) => {
         <DialogContent>
             <Grid container container spacing={2}>
             <Grid item xs={6}>
-            <FilledInput 
+            <FilledInput
+            onChange={handleChange} 
             name="title"
             value={jobDetails.title}
             autoComplete="off"
@@ -68,13 +79,14 @@ export default (props) => {
             fullWidth />
             </Grid>
             <Grid item xs={6}>
-            <Select 
+            <Select
+            onChange={handleChange}
             fullWidth
             name="type"
             value={jobDetails.type}
             disableUnderline 
             variant="filled" 
-            defaultValue="Full time">
+            >
                 <MenuItem value="Full time">Full Time</MenuItem>
                 <MenuItem value="Part time">Part time</MenuItem>
                 <MenuItem value="Contract">Contract</MenuItem>
@@ -82,6 +94,7 @@ export default (props) => {
             </Grid>
             <Grid item xs={6}>
             <FilledInput
+            onChange={handleChange}
             name="companyName"
             value={jobDetails.companyName}
             autoComplete="off"
@@ -92,6 +105,7 @@ export default (props) => {
             </Grid>
             <Grid item xs={6}>
             <FilledInput
+            onChange={handleChange}
             name="companyUrl"
             value={jobDetails.companyUrl}
             autoComplete="off"
@@ -101,19 +115,21 @@ export default (props) => {
             />
             </Grid>
             <Grid item xs={6}>
-            <Select 
+            <Select
+            onChange={handleChange}
             name="location"
             value={jobDetails.location}
             fullWidth 
             disableUnderline 
             variant="filled" 
-            defaultValue="Remote">
+            >
                 <MenuItem value="Remote">Remote</MenuItem>
                 <MenuItem value="In-office">In-office</MenuItem>
             </Select>
             </Grid>
             <Grid item xs={6}>
             <FilledInput
+            onChange={handleChange}
             name="link"
             value={jobDetails.link}
             autoComplete="off"
@@ -124,6 +140,7 @@ export default (props) => {
             </Grid>
             <Grid item xs={12}>
             <FilledInput
+            onChange={handleChange}
             name="description"
             value={jobDetails.description}
             autoComplete="off"
