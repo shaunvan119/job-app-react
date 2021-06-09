@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions, makeStyles, Typography, Button, IconButton } from "@material-ui/core";
 
 import { Close as CloseIcon } from '@material-ui/icons'
@@ -24,6 +24,9 @@ const useStyles = makeStyles ((theme) => ({
 
 
 export default (props) => {
+    const [jobDetails, setJobDetails] = useState({
+        
+    })
     const classes = useStyles();
     const skills = [
         "Javascript",
@@ -36,7 +39,7 @@ export default (props) => {
 
     ];
     return (
-        <Dialog open={''} fullWidth> 
+        <Dialog open={true} fullWidth> 
         <DialogTitle>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 Post Job
