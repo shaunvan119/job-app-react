@@ -25,7 +25,15 @@ const useStyles = makeStyles ((theme) => ({
 
 export default (props) => {
     const [jobDetails, setJobDetails] = useState({
-        
+        title:"",
+        type:"",
+        companyName:"",
+        companyUrl:"",
+        location:"",
+        link:"",
+        description:"",
+        skills: [],
+
     })
     const classes = useStyles();
     const skills = [
@@ -51,11 +59,19 @@ export default (props) => {
         <DialogContent>
             <Grid container container spacing={2}>
             <Grid item xs={6}>
-            <FilledInput placeholder="Job title *" disableUnderline fullWidth />
+            <FilledInput 
+            name="title"
+            value={jobDetails.title}
+            autoComplete="off"
+            placeholder="Job title *" 
+            disableUnderline 
+            fullWidth />
             </Grid>
             <Grid item xs={6}>
             <Select 
             fullWidth
+            name="type"
+            value={jobDetails.type}
             disableUnderline 
             variant="filled" 
             defaultValue="Full time">
@@ -65,34 +81,52 @@ export default (props) => {
             </Select>
             </Grid>
             <Grid item xs={6}>
-            <FilledInput 
+            <FilledInput
+            name="companyName"
+            value={jobDetails.companyName}
+            autoComplete="off"
             placeholder="Company name *" 
             disableUnderline 
             fullWidth 
             />
             </Grid>
             <Grid item xs={6}>
-            <FilledInput 
+            <FilledInput
+            name="companyUrl"
+            value={jobDetails.companyUrl}
+            autoComplete="off"
             placeholder="Company URL *" 
             disableUnderline 
             fullWidth 
             />
             </Grid>
             <Grid item xs={6}>
-            <Select fullWidth disableUnderline variant="filled" defaultValue="Remote">
+            <Select 
+            name="location"
+            value={jobDetails.location}
+            fullWidth 
+            disableUnderline 
+            variant="filled" 
+            defaultValue="Remote">
                 <MenuItem value="Remote">Remote</MenuItem>
                 <MenuItem value="In-office">In-office</MenuItem>
             </Select>
             </Grid>
             <Grid item xs={6}>
-            <FilledInput 
+            <FilledInput
+            name="link"
+            value={jobDetails.link}
+            autoComplete="off"
             placeholder="Job Link *" 
             disableUnderline 
             fullWidth 
             />
             </Grid>
             <Grid item xs={12}>
-            <FilledInput 
+            <FilledInput
+            name="description"
+            value={jobDetails.description}
+            autoComplete="off"
             placeholder="Job Desription *" 
             disableUnderline 
             fullWidth
