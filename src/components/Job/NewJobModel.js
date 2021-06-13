@@ -1,5 +1,18 @@
 import React, { useState } from "react";
-import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions, makeStyles, Typography, Button, IconButton } from "@material-ui/core";
+import { Box, 
+         Grid, 
+         FilledInput, 
+         Select, 
+         MenuItem, 
+         Dialog, 
+         DialogTitle, 
+         DialogContent, 
+         DialogActions, 
+         makeStyles, 
+         Typography, 
+         Button, 
+         IconButton, 
+         CircularProgress } from "@material-ui/core";
 
 import { Close as CloseIcon } from '@material-ui/icons'
 
@@ -20,10 +33,15 @@ const useStyles = makeStyles ((theme) => ({
             color: "#fff",
         }
     },
+    included: {
+        backgroundColor: theme.palette.secondary.main,
+            color: "#fff",
+    }
 }));
 
 
 export default (props) => {
+    const [loading, setLoading] = useState(false)
     const [jobDetails, setJobDetails] = useState({
         title:"",
         type:"Full time",
@@ -40,9 +58,28 @@ export default (props) => {
         e.persist();
         setJobDetails((oldState) => ({ 
             ...oldState, 
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         }));
     };
+
+    const addRemoveSkill = (skill) => 
+        jobDetails.skills.includes(skill)
+        ? setJobDetails((oldState) => ({ 
+            ...oldState, 
+            skills: oldState.skills.filter((s) => s === skill),
+        }))
+        : setJobDetails((oldState) => ({ 
+            ...oldState, 
+            skills: oldState.skills.concat(skill),
+        }));
+
+    const handleSubmit = async () => {
+        setLoading(true);
+        await props.postJob(jobDetails)
+        setLoading(false);
+    }
+
+    
     const classes = useStyles();
     const skills = [
         "Javascript",
@@ -55,7 +92,7 @@ export default (props) => {
 
     ];
 
-    console.log(jobDetails)
+    console.log(jobDetails);
     return (
         <Dialog open={true} fullWidth> 
         <DialogTitle>
@@ -156,7 +193,11 @@ export default (props) => {
             <Typography>Skills</Typography>
             <Box display="flex">
                 {skills.map((skill) => (
-                    <Box className={classes.skillChip} key={skill}>{skill}</Box>
+                    <Box 
+                    onClick={() => addRemoveSkill(skill)} 
+                    className={`${classes.skillChip} 
+                    ${jobDetails.skills.includes(skill) && classes.included}`} 
+                    key={skill}>{skill}</Box>
                 ))}
             </Box>
             </Box>
@@ -169,7 +210,18 @@ export default (props) => {
              alignItems="center"
              >
             <Typography variant="caption">*Required fields</Typography>
-            <Button variant="contained" disableElevation color="primary">Post Job</Button>
+            <Button 
+            onClick={handleSubmit} 
+            variant="contained" 
+            disableElevation 
+            color="primary"
+            disabled={loading}> 
+            {loading ? (
+            <CircularProgress color="secondary" size={22}/>
+            ) : (
+            "Post Job"
+            )}
+            </Button>
         </Box>
         </DialogActions>
         </Dialog>
