@@ -14,6 +14,7 @@ const [loading, setLoading] = useState(true);
 const [newJobModel, setNewJobModel] = useState(false)
 
 const fetchJobs = async () => {
+    setLoading(true);
     const req = await firestore
     .collection("jobs")
     .orderBy("postedOn", "desc")
@@ -46,6 +47,7 @@ useEffect(() => {
  closeModel={() => setNewJobModel(false)} 
  newJobModel={newJobModel} 
  postJob={postJob} />
+ <Box mb={3}>
  <Grid container justify="center">
  <Grid item xs={10}>
  <SearchBar />
@@ -60,6 +62,7 @@ useEffect(() => {
 
  </Grid>
  </Grid>
+ </Box>
  </ThemeProvider>
  );
 };

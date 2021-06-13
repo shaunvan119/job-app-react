@@ -75,9 +75,14 @@ export default (props) => {
         }));
 
     const handleSubmit = async () => {
-        setLoading(true);
-        await props.postJob(jobDetails)
-        closeModel();
+        for (const field in jobDetails) {
+            if(typeof jobDetails[field] === 'string' && !jobDetails[field]) 
+            return console.log('not validated')
+        }
+        return console.log("validated");
+        //setLoading(true);
+        //await props.postJob(jobDetails)
+        //closeModel();
     };
 
     const closeModel = () => {
