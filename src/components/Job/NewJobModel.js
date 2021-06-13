@@ -76,13 +76,12 @@ export default (props) => {
 
     const handleSubmit = async () => {
         for (const field in jobDetails) {
-            if(typeof jobDetails[field] === 'string' && !jobDetails[field]) 
-            return console.log('not validated')
+            if(typeof jobDetails[field] === 'string' && !jobDetails[field]) return;   
         }
-        return console.log("validated");
-        //setLoading(true);
-        //await props.postJob(jobDetails)
-        //closeModel();
+        if(!jobDetails.skills.length) return;
+        setLoading(true);
+        await props.postJob(jobDetails);
+        closeModel();
     };
 
     const closeModel = () => {
@@ -203,7 +202,7 @@ export default (props) => {
             </Grid>
             </Grid> 
             <Box mt={2}>
-            <Typography>Skills</Typography>
+            <Typography>Skills*</Typography>
             <Box display="flex">
                 {skills.map((skill) => (
                     <Box 
