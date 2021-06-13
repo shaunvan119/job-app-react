@@ -10,7 +10,8 @@ import { firestore, app } from "./firebase/config";
 
 export default () => {
 const [jobs, setJobs] = useState([]);
-const [loading, setLoading] = useState(true)
+const [loading, setLoading] = useState(true);
+const [newJobModel, setNewJobModel] = useState(false)
 
 const fetchJobs = async () => {
     const req = await firestore
@@ -29,9 +30,10 @@ setLoading(false);
 const postJob = async jobDetails => {
     await firestore.collection('jobs').add({
         ...jobDetails,
-        postedOn: app.firestore.FieldValue.serverTimestamp()
-    })
-}
+        postedOn: app.firestore.FieldValue.serverTimestamp(),
+    });
+    fetchJobs();
+};
 
 useEffect(() => {
     fetchJobs();
@@ -39,8 +41,11 @@ useEffect(() => {
 
  return (
  <ThemeProvider theme={theme}>
- <Header />
- <NewJobModel postJob={postJob}/>
+ <Header openNewJobModel={() => setNewJobModel(true)}/>
+ <NewJobModel 
+ closeModel={() => setNewJobModel(false)} 
+ newJobModel={newJobModel} 
+ postJob={postJob} />
  <Grid container justify="center">
  <Grid item xs={10}>
  <SearchBar />

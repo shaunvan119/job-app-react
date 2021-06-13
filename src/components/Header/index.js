@@ -8,7 +8,11 @@ export default (props) => (
     <Box display="flex" justifyContent="space-between">
     <Typography variant = "h5"> Open Job listing
     </Typography>
-    <Button variant="contained" color="primary" disableElevation>
+    <Button
+    onClick={props.openNewJobModel} 
+    variant="contained" 
+    color="primary" 
+    disableElevation>
     Post a Job
     </Button>
     </Box>

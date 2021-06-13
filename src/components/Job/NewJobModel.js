@@ -39,11 +39,8 @@ const useStyles = makeStyles ((theme) => ({
     }
 }));
 
-
-export default (props) => {
-    const [loading, setLoading] = useState(false)
-    const [jobDetails, setJobDetails] = useState({
-        title:"",
+const initState = {
+    title:"",
         type:"Full time",
         companyName:"",
         companyUrl:"",
@@ -51,8 +48,12 @@ export default (props) => {
         link:"",
         description:"",
         skills: [],
+};
 
-    });
+
+export default (props) => {
+    const [loading, setLoading] = useState(false)
+    const [jobDetails, setJobDetails] = useState(initState);
 
     const handleChange = (e) => {
         e.persist();
@@ -76,8 +77,15 @@ export default (props) => {
     const handleSubmit = async () => {
         setLoading(true);
         await props.postJob(jobDetails)
+        closeModel();
+    };
+
+    const closeModel = () => {
+        setJobDetails(initState)
         setLoading(false);
-    }
+        props.closeModel();
+
+    };
 
     
     const classes = useStyles();
@@ -94,17 +102,17 @@ export default (props) => {
 
     console.log(jobDetails);
     return (
-        <Dialog open={true} fullWidth> 
+        <Dialog open={props.newJobModel} fullWidth> 
         <DialogTitle>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 Post Job
-                <IconButton>
+                <IconButton onClick={closeModel}>
                     <CloseIcon/>
                 </IconButton>
             </Box>
         </DialogTitle>
         <DialogContent>
-            <Grid container container spacing={2}>
+            <Grid container spacing={2}>
             <Grid item xs={6}>
             <FilledInput
             onChange={handleChange} 
