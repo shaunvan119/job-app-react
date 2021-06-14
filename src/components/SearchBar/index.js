@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Select, MenuItem, makeStyles } from '@material-ui/core'
+import { Box, Button, Select, MenuItem, makeStyles, CircularProgress } from '@material-ui/core'
 
 const useStyles = makeStyles({
     wrapper:{
@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 });
 
 export default (props) => {
+    const [loading, setLoading] = useState(false)
     const [jobSearch, setJobSearch] = useState({
         type: "Full time",
         location: "Remote",
@@ -30,7 +31,11 @@ export default (props) => {
         }));
     };
 
-    console.log(jobSearch);
+    const search = async () => {
+        setLoading(true);
+        await props.fetchJobsCustom(jobSearch)
+        setLoading(false);
+    };
 
     const classes = useStyles();
     return (
@@ -44,8 +49,18 @@ export default (props) => {
                 <MenuItem value="Remote">Remote</MenuItem>
                 <MenuItem value="In-office">In-office</MenuItem>
             </Select>
-            <Button variant="contained" color="primary" disableElevation>
-                 Search
+            <Button 
+            disabled={loading} 
+            variant="contained" 
+            color="primary" 
+            disableElevation
+            onClick={search}
+            >
+            {loading ? (
+            <CircularProgress color="secondary" size={22}/>
+            ) : (
+            "Search"
+            )}
             </Button>
         </Box>
     );
