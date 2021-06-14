@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Select, MenuItem, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -17,15 +17,30 @@ const useStyles = makeStyles({
 });
 
 export default (props) => {
+    const [jobSearch, setJobSearch] = useState({
+        type: "Full time",
+        location: "Remote",
+    });
+
+    const handleChange = (e) => {
+        e.persist();
+        setJobSearch((oldState) => ({ 
+            ...oldState, 
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    console.log(jobSearch);
+
     const classes = useStyles();
     return (
         <Box p={2} mt={-5} mb={2} className= {classes.wrapper}>
-            <Select disableUnderline variant="filled" defaultValue="Full time">
+            <Select onChange={handleChange} value={jobSearch.type} name="type" disableUnderline variant="filled">
                 <MenuItem value="Full time">Full Time</MenuItem>
                 <MenuItem value="Part time">Part time</MenuItem>
                 <MenuItem value="Contract">Contract</MenuItem>
             </Select>
-            <Select disableUnderline variant="filled" defaultValue="Remote">
+            <Select onChange={handleChange} value={jobSearch.location} name="location" disableUnderline variant="filled">
                 <MenuItem value="Remote">Remote</MenuItem>
                 <MenuItem value="In-office">In-office</MenuItem>
             </Select>

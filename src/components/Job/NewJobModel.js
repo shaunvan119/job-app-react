@@ -104,7 +104,7 @@ export default (props) => {
 
     ];
 
-    console.log(jobDetails);
+    
     return (
         <Dialog open={props.newJobModel} fullWidth> 
         <DialogTitle>
