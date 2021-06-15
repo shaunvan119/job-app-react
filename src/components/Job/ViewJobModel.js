@@ -13,19 +13,43 @@ import { Box,
         Button, 
         IconButton, 
         CircularProgress } from "@material-ui/core";
-        import { Close as CloseIcon } from "@material-ui/icons"
+        import { Close as CloseIcon } from "@material-ui/icons";
+        import { format } from "date-fns";
 
-export default (props) => (
+
+        const useStyles = makeStyles({
+            info: {
+                '& > *' : {
+                    margin: '5px'
+                }
+            }
+        })
+
+export default (props) => {
+    const classes = useStyles()
+
+    return (
     <Dialog open={!!Object.keys(props.job).length} fullWidth>  
         <DialogTitle>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                Post Job
+                {props.job.title} @ {props.job.companyName}
                 <IconButton>
                     <CloseIcon/>
                 </IconButton>
             </Box>
         </DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogContent>
+            <Box>
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Posted on:</Typography>
+                  <Typography variant="body2">
+                  {props.job.postedOn && 
+                  format(props.job.postedOn, "dd/MMM/yyy HH:MM")}
+                  </Typography>
+              </Box>  
+            </Box>
+        </DialogContent>
         <DialogActions></DialogActions>
         </Dialog>
 );
+}
