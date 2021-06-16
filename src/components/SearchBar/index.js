@@ -20,7 +20,7 @@ export default (props) => {
     const [loading, setLoading] = useState(false)
     const [jobSearch, setJobSearch] = useState({
         type: "Full time",
-        location: "Remote",
+        location: "VIC",
     });
 
     const handleChange = (e) => {
@@ -46,8 +46,14 @@ export default (props) => {
                 <MenuItem value="Contract">Contract</MenuItem>
             </Select>
             <Select onChange={handleChange} value={jobSearch.location} name="location" disableUnderline variant="filled">
-                <MenuItem value="Remote">Remote</MenuItem>
-                <MenuItem value="In-office">In-office</MenuItem>
+                <MenuItem value="VIC">VIC</MenuItem>
+                <MenuItem value="ACT">ACT</MenuItem>
+                <MenuItem value="NSW">NSW</MenuItem>
+                <MenuItem value="QLD">QLD</MenuItem>
+                <MenuItem value="NT">NT</MenuItem>
+                <MenuItem value="WA">WA</MenuItem>
+                <MenuItem value="SA">SA</MenuItem>
+                <MenuItem value="TAS">TAS</MenuItem>
             </Select>
             <Button 
             disabled={loading} 

@@ -94,13 +94,10 @@ export default (props) => {
     
     const classes = useStyles();
     const skills = [
-        "Javascript",
-        "React",
-        "Node",
-        "Vue",
-        "Firebase",
-        "MongoDB",
-        "SQL",
+        "Cert III Fitness",
+        "Cert IV Fitness",
+        "First Aid",
+        
 
     ];
 
@@ -172,8 +169,14 @@ export default (props) => {
             disableUnderline 
             variant="filled" 
             >
-                <MenuItem value="Remote">Remote</MenuItem>
-                <MenuItem value="In-office">In-office</MenuItem>
+                <MenuItem value="VIC">VIC</MenuItem>
+                <MenuItem value="ACT">ACT</MenuItem>
+                <MenuItem value="NSW">NSW</MenuItem>
+                <MenuItem value="QLD">QLD</MenuItem>
+                <MenuItem value="NT">NT</MenuItem>
+                <MenuItem value="WA">WA</MenuItem>
+                <MenuItem value="SA">SA</MenuItem>
+                <MenuItem value="TAS">TAS</MenuItem>
             </Select>
             </Grid>
             <Grid item xs={6}>

@@ -17,13 +17,22 @@ import { Box,
         import { format } from "date-fns";
 
 
-        const useStyles = makeStyles({
+        const useStyles = makeStyles((theme) => ({
             info: {
                 '& > *' : {
-                    margin: '5px'
-                }
-            }
-        })
+                    margin: '4px',
+                },
+            },
+            skillChip: {
+                margin: theme.spacing(0.5),
+                padding: theme.spacing(0.75),
+                fontSize: "14.5px",
+                borderRadius: "5px",
+                fontWeight: 600,
+                backgroundColor: theme.palette.secondary.main,
+                color: "#fff",
+            },
+        }));
 
 export default (props) => {
     const classes = useStyles()
@@ -33,7 +42,7 @@ export default (props) => {
         <DialogTitle>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 {props.job.title} @ {props.job.companyName}
-                <IconButton>
+                <IconButton onClick={props.closeModel}>
                     <CloseIcon/>
                 </IconButton>
             </Box>
@@ -47,9 +56,51 @@ export default (props) => {
                   format(props.job.postedOn, "dd/MMM/yyy HH:MM")}
                   </Typography>
               </Box>  
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Job type:</Typography>
+                  <Typography variant="body2">{props.job.type}
+                  </Typography>
+              </Box>
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Job location:</Typography>
+                  <Typography variant="body2">{props.job.location}
+                  </Typography>
+              </Box>
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Job desription:</Typography>
+                  <Typography variant="body2">{props.job.description}
+                  </Typography>
+              </Box>
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Company name:</Typography>
+                  <Typography variant="body2">{props.job.companyName}
+                  </Typography>
+              </Box>
+              <Box className={classes.info} display= "flex">
+                  <Typography variant="caption">Company website:</Typography>
+                  <Typography variant="body2">{props.job.companyUrl}
+                  </Typography>
+              </Box>
+              <Box ml={0.5}>
+                  <Typography variant="caption">Skills:</Typography>
+                  <Grid container alignItems="center">
+                  {props.job.skills &&
+                   props.job.skills.map((skill) => (
+                       <Grid item key={skill} className= {classes.skillChip}>
+                       {skill}
+                       </Grid>
+                   ))}
+                  </Grid>
+              </Box>
             </Box>
         </DialogContent>
-        <DialogActions></DialogActions>
+        <DialogActions>
+            <Button 
+            variant="outlined" 
+            component="a" 
+            href={props.job.link} 
+            target="_blank">Apply</Button>
+        </DialogActions>
         </Dialog>
 );
 }
