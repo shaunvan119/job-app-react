@@ -3,8 +3,10 @@ import { createMuiTheme } from "@material-ui/core";
  
 const primary = "#339bd4";
 const secondary = "#339bd4";
- 
-export default createMuiTheme({
+
+
+/* function to export UI themes and passing them in to CSS styling */
+export default createMuiTheme({  
  typography: {
    fontFamily: "Poppins, sans-serif",
  },

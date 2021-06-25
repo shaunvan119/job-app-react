@@ -66,7 +66,7 @@ useEffect(() => {
 }, []);
 
  return (
- <ThemeProvider theme={theme}>
+ <ThemeProvider theme={theme}> {/* importing theme from UI theme folder */}
  <Header openNewJobModel={() => setNewJobModel(true)}/>
  <NewJobModel 
  closeModel={() => setNewJobModel(false)} 
