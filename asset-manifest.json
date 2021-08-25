@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/job-app-react/static/css/main.78668242.chunk.css",
+    "main.js": "/job-app-react/static/js/main.0ca5675f.chunk.js",
+    "main.js.map": "/job-app-react/static/js/main.0ca5675f.chunk.js.map",
+    "runtime-main.js": "/job-app-react/static/js/runtime-main.e6d8c213.js",
+    "runtime-main.js.map": "/job-app-react/static/js/runtime-main.e6d8c213.js.map",
+    "static/js/2.4a4d9d2f.chunk.js": "/job-app-react/static/js/2.4a4d9d2f.chunk.js",
+    "static/js/2.4a4d9d2f.chunk.js.map": "/job-app-react/static/js/2.4a4d9d2f.chunk.js.map",
+    "index.html": "/job-app-react/index.html",
+    "static/css/main.78668242.chunk.css.map": "/job-app-react/static/css/main.78668242.chunk.css.map",
+    "static/js/2.4a4d9d2f.chunk.js.LICENSE.txt": "/job-app-react/static/js/2.4a4d9d2f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e6d8c213.js",
+    "static/js/2.4a4d9d2f.chunk.js",
+    "static/css/main.78668242.chunk.css",
+    "static/js/main.0ca5675f.chunk.js"
+  ]
+}
