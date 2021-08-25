@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, Typography, Button } from '@material-ui/core'
 
 
-{/* importing theme from UI theme folder, containing the Grid, Box, Typo, Button*/}
+/* importing theme from UI theme folder, containing the Grid, Box, Typo, Button*/
 export default (props) => (
 <Box py={15} bgcolor="#572d80" color="white">
     <Grid container justify="center">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; /* use effect is triggered on every render, use state hook is used to implement the state with in the finction componenets in react */
 import { Box, Grid, ThemeProvider, Typography, CircularProgress, Button } from "@material-ui/core";
 import theme from "./theme/theme";
 import Header from "./components/Header/";
@@ -11,26 +11,27 @@ import ViewJobModel from "./components/Job/ViewJobModel";
 
 
 export default () => {
-const [jobs, setJobs] = useState([]);
-const [loading, setLoading] = useState(true);
+const [jobs, setJobs] = useState([]); /* array of jobs and setJobs allows us to change the state */
+const [loading, setLoading] = useState(true); /* shows the user the page is loading */
 const [customSearch, setCustomSearch] = useState(false);
 const [newJobModel, setNewJobModel] = useState(false)
 const [viewJob, setViewJob] = useState({});
 
-
+/* Fecthing the jobs from firebase and returning a array */
 const fetchJobs = async () => {
     setCustomSearch(false)
     setLoading(true);
     const req = await firestore
-    .collection("jobs")
-    .orderBy("postedOn", "desc")
+    .collection("jobs") /* calling the Job collection */
+    .orderBy("postedOn", "desc") /* fecth jobs by order decending order */
     .get();
+  /* fecting the jobs and looping over array and returning the data */  
 const tempJobs = req.docs.map((job) => ({
-    ...job.data(), 
+    ...job.data(), /* spreading the job and returninf the job ID from firebase */
     id: job.id, 
-    postedOn: job.data().postedOn.toDate(), 
+    postedOn: job.data().postedOn.toDate(), /* calling the Jod ID and the posted on time stamp displayed on the page */
 }));
-setJobs(tempJobs);
+setJobs(tempJobs); /* calling the array from firebase */
 setLoading(false);
 };
 
@@ -53,6 +54,8 @@ setLoading(false);
 
 }
 
+/* passing jobs as a argument and making a request to save it in firestore, importing from 
+firebase config file*/
 const postJob = async jobDetails => {
     await firestore.collection('jobs').add({
         ...jobDetails,
@@ -61,8 +64,12 @@ const postJob = async jobDetails => {
     fetchJobs();
 };
 
+/* Fecthing the jobs from firebase and returning a array 
+takes in two argument, first argument is triggered on evey render,
+secound argument is a dependency that makes the decision on weatrher 
+or not it should be rendered*/
 useEffect(() => {
-    fetchJobs();
+    fetchJobs(); /* function is called when the user opens the web page */
 }, []);
 
  return (
@@ -71,7 +78,7 @@ useEffect(() => {
  <NewJobModel 
  closeModel={() => setNewJobModel(false)} 
  newJobModel={newJobModel} 
- postJob={postJob} 
+ postJob={postJob}  /* passing in prop postjob from line 59*/
  />
  <ViewJobModel job={viewJob} closeModel={() => setViewJob({})} />
  <Box mb={3}>
