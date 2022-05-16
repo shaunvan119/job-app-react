@@ -53,7 +53,7 @@ const initState = {
 };
 
 
-export default (props) => {
+export default function NewJobCard(props)  {
     const [loading, setLoading] = useState(false)
     const [jobDetails, setJobDetails] = useState(initState);
 /* Handling the change to the above state and overiding, and target.name

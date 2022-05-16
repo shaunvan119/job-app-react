@@ -1,9 +1,6 @@
 import React from "react";
 import { Box, 
         Grid, 
-        FilledInput, 
-        Select, 
-        MenuItem, 
         Dialog, 
         DialogTitle, 
         DialogContent, 
@@ -12,7 +9,7 @@ import { Box,
         Typography, 
         Button, 
         IconButton, 
-        CircularProgress } from "@material-ui/core";
+         } from "@material-ui/core";
         import { Close as CloseIcon } from "@material-ui/icons";
         import { format } from "date-fns";
 
@@ -34,7 +31,7 @@ import { Box,
             },
         }));
 
-export default (props) => {
+export default function VeiwJobModel(props)  {
     const classes = useStyles()
 
     return (

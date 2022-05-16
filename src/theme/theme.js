@@ -5,7 +5,7 @@ const primary = "#339bd4";
 const secondary = "#339bd4";
 
 
-/* function to export UI themes and passing them in to CSS styling, this folder is the theme pallet for our styling which is called within other files */
+/* function to export UI themes and passing them into CSS styling, this folder is the theme pallet for our styling which is called within other files */
 export default createMuiTheme({  
  typography: {
    fontFamily: "Poppins, sans-serif",

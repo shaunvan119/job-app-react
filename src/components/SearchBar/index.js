@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Button, Select, MenuItem, makeStyles, CircularProgress } from '@material-ui/core'
 
 
-{/* importing theme from UI theme folder, containing the Grid, Box, Typo, Button*/}
+/* importing theme from UI theme folder, containing the Grid, Box, Typo, Button*/
 const useStyles = makeStyles({
     wrapper:{
         border: "1px solid grey",
@@ -17,8 +17,8 @@ const useStyles = makeStyles({
         },
     },
 });
-{/* functional componenet for the search bar*/}
-export default (props) => {
+/* functional componenet for the search bar*/
+export default function SearchBar(props)  {
     const [loading, setLoading] = useState(false)
     const [jobSearch, setJobSearch] = useState({
         type: "Full time",
@@ -39,7 +39,7 @@ export default (props) => {
         setLoading(false);
     };
 
-    const classes = useStyles(); {/* funtional component to pass in line 6 UI Stryles*/}
+    const classes = useStyles(); /* funtional component to pass in line 6 UI Stryles*/
     return (
         <Box p={2} mt={-5} mb={2} className= {classes.wrapper}> {/* Search bar*/}
             <Select onChange={handleChange} value={jobSearch.type} name="type" disableUnderline variant="filled">

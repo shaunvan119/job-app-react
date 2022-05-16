@@ -2,8 +2,11 @@ import React from 'react';
 import { Box, Grid, Typography, Button } from '@material-ui/core'
 
 
+
 /* importing theme from UI theme folder, containing the Grid, Box, Typo, Button*/
-export default (props) => (
+export default function  Header(props)  {
+    
+    return (
 <Box py={15} bgcolor="#572d80" color="white">
     <Grid container justify="center">
     <Grid item xs={10}>
@@ -22,4 +25,5 @@ export default (props) => (
     </Grid>
 </Box>
 
-);
+
+)};

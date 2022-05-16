@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; /* use effect is triggered on every render, use state hook is used to implement the state with in the finction componenets in react */
-import { Box, Grid, ThemeProvider, Typography, CircularProgress, Button } from "@material-ui/core";
+import { Box, Grid, ThemeProvider, CircularProgress, Button } from "@material-ui/core";
 import theme from "./theme/theme";
 import Header from "./components/Header/";
 import SearchBar from "./components/SearchBar";
@@ -10,7 +10,7 @@ import { Close as CloseIcon } from "@material-ui/icons"
 import ViewJobModel from "./components/Job/ViewJobModel";
 
 
-export default () => {
+export default function App()  {
 const [jobs, setJobs] = useState([]); /* array of jobs and setJobs allows us to change the state */
 const [loading, setLoading] = useState(true); /* shows the user the page is loading */
 const [customSearch, setCustomSearch] = useState(false);
