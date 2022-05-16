@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/job-app-react/static/css/main.78668242.chunk.css",
-    "main.js": "/job-app-react/static/js/main.ae341335.chunk.js",
-    "main.js.map": "/job-app-react/static/js/main.ae341335.chunk.js.map",
+    "main.js": "/job-app-react/static/js/main.bea6fc18.chunk.js",
+    "main.js.map": "/job-app-react/static/js/main.bea6fc18.chunk.js.map",
     "runtime-main.js": "/job-app-react/static/js/runtime-main.e6d8c213.js",
     "runtime-main.js.map": "/job-app-react/static/js/runtime-main.e6d8c213.js.map",
     "static/js/2.4a4d9d2f.chunk.js": "/job-app-react/static/js/2.4a4d9d2f.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.e6d8c213.js",
     "static/js/2.4a4d9d2f.chunk.js",
     "static/css/main.78668242.chunk.css",
-    "static/js/main.ae341335.chunk.js"
+    "static/js/main.bea6fc18.chunk.js"
   ]
 }
